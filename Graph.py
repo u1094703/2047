@@ -1,11 +1,9 @@
 import pygame
 
 class Graph:
-    def __init__(self, x, y, characterX, characterY):
+    def __init__(self, x, y):
         self.xBoundary = x
         self.yBoundary = y
-        self.characterX = characterX
-        self.characterY = characterY
         self.graph = [[0] * x]*y
         self.make_walls()
 
@@ -18,7 +16,8 @@ class Graph:
                     self.graph[i][j] = Node(2);
                 else:
                     self.graph[i][j] = Node(0)
-    # def update_position(self):
+    def isAWall(self, xPosition, yPosition):
+        return self.graph[xPosition][yPosition].typeOfGround == 2
 
 
 class Node:
