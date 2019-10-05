@@ -18,7 +18,7 @@ class Graph:
                     self.graph[i][j] = Node(2);
                 else:
                     self.graph[i][j] = Node(0)
-    def update_position(self):
+    # def update_position(self):
 
 
 class Node:
