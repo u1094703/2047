@@ -96,8 +96,6 @@ if __name__=="__main__":
     view = View()
     view.runningGame()
 
-
-
 # in future versions, scale the difficulty of the enemies based on the map/level
 def battle():
     rand = random
