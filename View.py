@@ -87,11 +87,6 @@ class View:
                    wallSize.fill(wallColor)
                    self.screen.blit(wallSize, (x * tileSize, y * tileSize))
 
-
-
-
-
-
 if __name__=="__main__":
     view = View()
     view.runningGame()
