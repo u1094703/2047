@@ -10,6 +10,8 @@ from Graph import Graph
 from Character import *
 class View:
     def __init__(self):
+                
+
         pygame.init()
         self.running = True
         self.screen = pygame.display.set_mode((width, height))
@@ -25,6 +27,33 @@ class View:
                 if event.type == pygame.QUIT:
                     self.running = False
 
+
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_LEFT]:
+                if self.graph.isAWall(self.player.positionX - 1, self.player.positionY):
+                    output = "do nothing"
+                else:
+                    self.player.scoot_left()
+            if keys[pygame.K_RIGHT]:
+                if self.graph.isAWall(self.player.positionX + 1, self.player.positionY):
+                    output = "do nothing"
+                else:
+                    self.player.scoot_right()
+            if keys[pygame.K_UP]:
+                if self.graph.isAWall(self.player.positionX, self.player.positionY - 1):
+                    output = "do nothing"
+                else:
+                    self.player.scoot_up()
+            if keys[pygame.K_DOWN]:
+                if self.graph.isAWall(self.player.positionX, self.player.positionY + 1):
+                    output = "do nothing"
+                else:
+                    self.player.scoot_down()
+
+    def check_tile_actions(self):
+        if self.graph.typeOfGround(self.player.positionX, self.player.positionY) == 1:
+            if randint(1, 6) == 1:
+                self.battle()
 
     def drawMainBackGround(self):
         y = 0
@@ -46,6 +75,7 @@ class View:
                     self.screen.blit(wallSize, (x * tileSize, y * tileSize))
                 x = x + 1
             y = y + 1
+
 
 
     def new_game(self):
@@ -86,6 +116,7 @@ class View:
             if whose_turn == 'p':
                 self.attack(self.player, opponent)
                 if opponent.HP <= 0:
+                    self.player.credits += randint(15, 30)
                     break
                 whose_turn = 'o'
             else:
