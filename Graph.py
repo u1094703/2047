@@ -5,7 +5,17 @@ class Graph:
         self.xBoundary = int(x)
         self.yBoundary = int(y)
         self.graph = [[0] * self.xBoundary for i in range(self.yBoundary)]
-    def make_walls(self):
+        self.generateStartLevel()
+    def generateStartLevel(self):
+        for i in range(len(self.graph)):
+            for j in range(len(self.graph[i])):
+                if(i == 0 or i == self.xBoundary-1):
+                    self.graph[i][j] = Node(2);
+                elif(j == 0 or j == self.yBoundary-1):
+                    self.graph[i][j] = Node(2);
+                else:
+                    self.graph[i][j] = Node(0)
+    def generatRandomLevel(self):
         for i in range(len(self.graph)):
             for j in range(len(self.graph[i])):
                 if(i == 0 or i == self.xBoundary-1):
