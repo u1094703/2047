@@ -1,6 +1,7 @@
 grassColor = (0, 255, 0)
 wallColor = (0,0,0)
 floorColor = (210, 180, 140)
+itemStore = (255, 0 , 0)
 
 width = 700
 height = 700

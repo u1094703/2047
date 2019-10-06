@@ -18,26 +18,35 @@ class View:
         pygame.display.set_caption("2047")
         self.savefile = shelve.open('savefile')
     def runningGame(self):
+        self.drawMainBackGround()
+        pygame.display.update()
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-            self.drawMainBackGround()
-            pygame.display.update()
+
 
     def drawMainBackGround(self):
-       for x in range(len(self.graph.graph)):
-           for y in range (len(self.graph.graph[x])):
-               wallSize = pygame.Surface((x * tileSize, y * tileSize))
-               if self.graph.typeOfGround(x, y) == 0:
-                   wallSize.fill(floorColor)
-                   self.screen.blit(wallSize, (x * tileSize, y * tileSize))
-               elif self.graph.typeOfGround(x,y) == 1:
-                   wallSize.fill(grassColor)
-                   self.screen.blit(wallSize, (x * tileSize, y * tileSize))
-               else:
-                   wallSize.fill(wallColor)
-                   self.screen.blit(wallSize, (x * tileSize, y * tileSize))
+        y = 0
+        for i in range(0, 20):
+            x = 0
+            for j in range(0, 20):
+                wallSize = pygame.Surface((tileSize, tileSize))
+                if self.graph.typeOfGround(x, y) == 0:
+                    wallSize.fill(floorColor)
+                    self.screen.blit(wallSize, (x * tileSize, y * tileSize))
+                elif self.graph.typeOfGround(x, y) == 1:
+                    wallSize.fill(grassColor)
+                    self.screen.blit(wallSize, (x * tileSize, y * tileSize))
+                elif self.graph.typeOfGround(x, y) == 3:
+                    wallSize.fill(itemStore)
+                    self.screen.blit(wallSize, (x * tileSize, y * tileSize))
+                else:
+                    wallSize.fill(wallColor)
+                    self.screen.blit(wallSize, (x * tileSize, y * tileSize))
+                x = x + 1
+            y = y + 1
+
 
     def new_game(self):
         if not self.savefile:
