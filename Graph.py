@@ -28,6 +28,13 @@ class Graph:
         return self.graph[xPosition][yPosition].typeOfGround == 2
     def typeOfGround(self, xPosition, yPosition):
         return self.graph[xPosition][yPosition].typeOfGround
+
+# GROUND TYPES:
+# 0: Ground
+# 1: Grass
+# 2: Wall
+# 3: Exit
+# 4: Store
 class Node:
     def __init__(self, typeOfGround):
         self.typeOfGround = typeOfGround
